@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
             else
             {
                 m_start.Enabled = false;//On désactive le bouton
-                m_start.Text = "Bot is running";
+                m_start.Text = "Waiting opening time";
                 tacheBot.Start();
             }
             
@@ -146,7 +146,7 @@ namespace WindowsFormsApplication1
                 driver.Close();
 
 
-                if (infos[7] == "1")
+                if (infos[8] == "1")
                 {
                     Process[] AllProcesses = Process.GetProcesses();
                     foreach (var process in AllProcesses)
@@ -162,6 +162,12 @@ namespace WindowsFormsApplication1
 
                 //On a finit !
                 m_start.Text = "Finnished !";
+
+                //On ferme si nécessaire
+                if (infos[6] == "1")
+                {
+                    Application.Exit();
+                }
 
             }
             catch (Exception ex)
